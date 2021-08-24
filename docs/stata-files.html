@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Stata Code Files</title>
+
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Workshop on Causal Inference with Panel Data</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    
+  </a>
+</li>
+<li>
+  <a href="slides.html">Slides</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Code
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="stata-files.html">Stata do files</a>
+    </li>
+    <li>
+      <a href="R-files.html">R scripts</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="data.html">Data</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Stata Code Files</h1>
+
+</div>
+
+
+<div id="intro-to-panel-data" class="section level3">
+<h3>Intro to Panel Data</h3>
+<pre class="stata"><code>****************************************
+** Panel data estimates in Stata
+****************************************
+
+** FE (within) estimator
+ssc install bcuse
+bcuse wagepan
+xtset nr year
+xtreg lwage exper expersq, fe
+
+
+** Manually demeaning the data
+foreach x of varlist lwage exper expersq {
+  egen mean_`x&#39;=mean(`x&#39;)
+  egen demean_`x&#39;=`x&#39;-mean_`x&#39;
+}
+reg demean_lwage demean_exper demean_expersq
+
+
+** First differencing
+** note: the &quot;d.&quot; operator only works with identical time gaps (1 in this case)
+reg d.lwage d.exper d.expersq, noconstant</code></pre>
+<pre class="r"><code>########################################
+## Panel data estimates in R
+########################################
+  
+## FE (within) estimator
+library(readstata13)
+library(fixest)
+library(tidyverse)
+wagepan &lt;- read.dta13(&quot;http://fmwww.bc.edu/ec-p/data/wooldridge/wagepan.dta&quot;)
+feols(lwage~exper + expersq | nr, data=wagepan)
+
+
+## Manually demeaning the data
+wagepan &lt;- wagepan %&gt;%
+  group_by(nr) %&gt;%
+  mutate(demean_lwage=lwage - mean(lwage),
+         demean_exper=exper - mean(exper),
+         demean_expersq=expersq - mean(expersq))
+summary(lm(demean_lwage~demean_exper + demean_expersq, data=wagepan))
+
+
+## First differencing
+wagepan &lt;- wagepan %&gt;%
+  group_by(nr) %&gt;%
+  arrange(year) %&gt;%
+  mutate(fd_lwage=lwage - lag(lwage),
+         fd_exper=exper - lag(exper),
+         fd_expersq=expersq - lag(expersq)) %&gt;%
+  na.omit()
+summary(lm(fd_lwage~0 + fd_exper + fd_expersq, data=wagepan))</code></pre>
+</div>
+<div id="basics-of-dd" class="section level3">
+<h3>Basics of DD</h3>
+<pre class="stata"><code>****************************************
+** Differences-in-Differences in Stata
+****************************************
+insheet using &quot;https://raw.githubusercontent.com/imccart/empirical-methods/main/data/medicaid-expansion/mcaid-expand-data.txt&quot;, clear
+
+
+** Looking at the data
+gen perc_unins=uninsured/adult_pop
+keep if expand_year==&quot;2014&quot; | expand_year==&quot;NA&quot;
+drop if expand_ever==&quot;NA&quot;
+collapse (mean) perc_unins, by(year expand_ever)
+graph twoway (connected perc_unins year if expand_ever==&quot;FALSE&quot;, color(black) lpattern(solid)) ///
+  (connected perc_unins year if expand_ever==&quot;TRUE&quot;, color(black) lpattern(dash)), ///
+  xline(2013.5) ///
+    ytitle(&quot;Fraction Uninsured&quot;) xtitle(&quot;Year&quot;) legend(off) text(0.15 2017 &quot;Non-expansion&quot;, place(e)) text(0.08 2017 &quot;Expansion&quot;, place(e))
+
+
+** Simple 2x2 DD
+gen post=(year&gt;=2014)
+gen treat=(expand_ever==&quot;TRUE&quot;)
+gen treat_post=(expand==&quot;TRUE&quot;)
+
+reg perc_unins treat post treat_post
+
+** note - Stata 17 has didregress that will do a lot of this automatically</code></pre>
+<pre class="r"><code>########################################
+## Difference-in-Differences in R
+########################################
+library(tidyverse)  
+library(modelsummary)
+mcaid.data &lt;- read_tsv(&quot;https://raw.githubusercontent.com/imccart/empirical-methods/main/data/medicaid-expansion/mcaid-expand-data.txt&quot;)
+
+## Looking at the data
+ins.plot.dat &lt;- mcaid.data %&gt;% filter(expand_year==2014 | is.na(expand_year), !is.na(expand_ever)) %&gt;%
+  mutate(perc_unins=uninsured/adult_pop) %&gt;%
+  group_by(expand_ever, year) %&gt;% summarize(mean=mean(perc_unins))
+
+ins.plot &lt;- ggplot(data=ins.plot.dat, aes(x=year,y=mean,group=expand_ever,linetype=expand_ever)) + 
+  geom_line() + geom_point() + theme_bw() +
+  geom_vline(xintercept=2013.5, color=&quot;red&quot;) +
+  geom_text(data = ins.plot.dat %&gt;% filter(year == 2016), 
+            aes(label = c(&quot;Non-expansion&quot;,&quot;Expansion&quot;),
+                x = year + 1,
+                y = mean)) +
+  guides(linetype=FALSE) +
+  labs(
+    x=&quot;Year&quot;,
+    y=&quot;Fraction Uninsured&quot;,
+    title=&quot;Share of Uninsured over Time&quot;
+  )
+
+
+## Simple 2x2 DD
+reg.dat &lt;- mcaid.data %&gt;% filter(expand_year==2014 | is.na(expand_year), !is.na(expand_ever)) %&gt;%
+  mutate(perc_unins=uninsured/adult_pop,
+         post = (year&gt;=2014), 
+         treat=post*expand_ever)
+
+dd.ins.reg &lt;- lm(perc_unins ~ post + expand_ever + post*expand_ever, data=reg.dat)
+msummary(dd.ins.reg)</code></pre>
+</div>
+<div id="twfe-and-event-studies" class="section level3">
+<h3>TWFE and Event Studies</h3>
+<pre class="stata"><code>****************************************
+** Event Studies in Stata
+****************************************
+ssc install reghdfe
+
+** Common treatment timing
+insheet using &quot;https://raw.githubusercontent.com/imccart/empirical-methods/main/data/medicaid-expansion/mcaid-expand-data.txt&quot;, clear
+gen perc_unins=uninsured/adult_pop
+keep if expand_year==&quot;2014&quot; | expand_year==&quot;NA&quot;
+drop if expand_ever==&quot;NA&quot;
+gen post=(year&gt;=2014)
+gen treat=(expand_ever==&quot;TRUE&quot;)
+gen treat_post=(expand==&quot;TRUE&quot;)
+
+reghdfe perc_unins treat##ib2013.year, absorb(state)
+gen coef = .
+gen se = .
+forvalues i = 2012(1)2018 {
+    replace coef = _b[1.treat#`i&#39;.year] if year == `i&#39;
+    replace se = _se[1.treat#`i&#39;.year] if year == `i&#39;
+}
+
+* Make confidence intervals
+gen ci_top = coef+1.96*se
+gen ci_bottom = coef - 1.96*se
+
+* Limit ourselves to one observation per year
+keep year coef se ci_*
+duplicates drop
+
+* Create connected scatterplot of coefficients
+* with CIs included with rcap 
+* and a line at 0 from function
+twoway (sc coef year, connect(line)) (rcap ci_top ci_bottom year) ///
+    (function y = 0, range(2012 2018)), xtitle(&quot;Year&quot;) ///
+    caption(&quot;Estimates and 95% CI from Event Study&quot;)
+
+
+
+** Differential treatment timing
+insheet using &quot;https://raw.githubusercontent.com/imccart/empirical-methods/main/data/medicaid-expansion/mcaid-expand-data.txt&quot;, clear
+gen perc_unins=uninsured/adult_pop
+drop if expand_ever==&quot;NA&quot;
+replace expand_year=&quot;.&quot; if expand_year==&quot;NA&quot;
+destring expand_year, replace
+gen event_time=year-expand_year
+replace event_time=-1 if event_time==.
+
+forvalues l = 0/4 {
+    gen L`l&#39;event = (event_time==`l&#39;)
+}
+forvalues l = 1/2 {
+    gen F`l&#39;event = (event_time==-`l&#39;)
+}
+gen F3event=(event_time&lt;=-3)
+
+reghdfe perc_unins F3event F2event L0event L1event L2event L3event L4event, absorb(state year) cluster(state)
+gen coef = .
+gen se = .
+forvalues i = 2(1)3 {
+    replace coef = _b[F`i&#39;event] if F`i&#39;event==1
+    replace se = _se[F`i&#39;event] if F`i&#39;event==1
+}
+forvalues i = 0(1)4 {
+    replace coef = _b[L`i&#39;event] if L`i&#39;event==1
+    replace se = _se[L`i&#39;event] if L`i&#39;event==1
+}
+replace coef = 0 if F1event==1
+replace se=0 if F1event==1
+
+* Make confidence intervals
+gen ci_top = coef+1.96*se
+gen ci_bottom = coef - 1.96*se
+
+* Limit ourselves to one observation per year
+keep if event_time&gt;=-3 &amp; event_time&lt;=4
+keep event_time coef se ci_*
+duplicates drop
+
+* Create connected scatterplot of coefficients
+* with CIs included with rcap 
+* and a line at 0 from function
+sort event_time
+twoway (sc coef event_time, connect(line)) (rcap ci_top ci_bottom event_time) ///
+    (function y = 0, range(-3 4)), xtitle(&quot;Time&quot;) ///
+    caption(&quot;Estimates and 95% CI from Event Study&quot;) xlabel(-3(1)4)
+</code></pre>
+<pre class="r"><code>########################################
+## Event Studies in R
+########################################
+library(tidyverse)
+library(modelsummary)
+library(data.table)
+library(fixest)
+mcaid.data &lt;- read_tsv(&quot;https://raw.githubusercontent.com/imccart/empirical-methods/main/data/medicaid-expansion/mcaid-expand-data.txt&quot;)
+
+## Common treatment timing
+reg.dat &lt;- as.data.table(mcaid.data) %&gt;% 
+  filter(expand_year==2014 | is.na(expand_year), !is.na(expand_ever)) %&gt;%
+  mutate(perc_unins=uninsured/adult_pop,
+         post = (year&gt;=2014), 
+         treat=post*expand_ever)
+
+mod.twfe &lt;- feols(perc_unins~i(year, expand_ever, ref=2013) | State + year,
+                  cluster=~State,
+                  data=reg.dat)
+iplot(mod.twfe, 
+      xlab = &#39;Time to treatment&#39;,
+      main = &#39;Event study&#39;)
+
+
+## Differential treatment timing
+reg.dat &lt;- as.data.table(mcaid.data) %&gt;% 
+  filter(!is.na(expand_ever)) %&gt;%
+  mutate(perc_unins=uninsured/adult_pop)
+reg.dat[, time_to_treat := ifelse(expand_ever==TRUE, year-expand_year, -1)]
+
+reg.dat &lt;- reg.dat %&gt;%
+  mutate(time_to_treat=ifelse(time_to_treat&lt;=-3,-3,time_to_treat))
+
+mod.twfe &lt;- feols(perc_unins~i(time_to_treat, expand_ever, ref=-1) | State + year,
+                  cluster=~State,
+                  data=reg.dat)
+iplot(mod.twfe, 
+      xlab = &#39;Time to treatment&#39;,
+      main = &#39;Event study&#39;)</code></pre>
+</div>
+<div id="recent-dd-advancements" class="section level3">
+<h3>Recent DD Advancements</h3>
+<pre class="stata"><code>****************************************
+** Recent DD Estimators in Stata
+****************************************
+ssc install event_plot
+
+
+** Callaway and Sant&#39;Anna
+ssc install csdid
+ssc install drdid
+
+insheet using &quot;https://raw.githubusercontent.com/imccart/empirical-methods/main/data/medicaid-expansion/mcaid-expand-data.txt&quot;, clear
+gen perc_unins=uninsured/adult_pop
+egen stategroup=group(state)
+drop if expand_ever==&quot;NA&quot;
+replace expand_year=&quot;0&quot; if expand_year==&quot;NA&quot;
+destring expand_year, replace
+
+csdid perc_unins, ivar(stategroup) time(year) gvar(expand_year) notyet
+estat event, estore(cs)
+event_plot cs, default_look graph_opt(xtitle(&quot;Periods since the event&quot;) ytitle(&quot;Average causal effect&quot;) xlabel(-6(1)4) title(&quot;Callaway and Sant&#39;Anna (2020)&quot;)) stub_lag(T+#) stub_lead(T-#) together
+
+
+
+** Callaway and Sant&#39;Anna
+ssc install csdid
+ssc install drdid
+
+insheet using &quot;https://raw.githubusercontent.com/imccart/empirical-methods/main/data/medicaid-expansion/mcaid-expand-data.txt&quot;, clear
+gen perc_unins=uninsured/adult_pop
+egen stategroup=group(state)
+drop if expand_ever==&quot;NA&quot;
+replace expand_year=&quot;0&quot; if expand_year==&quot;NA&quot;
+destring expand_year, replace
+
+csdid perc_unins, ivar(stategroup) time(year) gvar(expand_year) notyet
+estat event, estore(cs)
+event_plot cs, default_look graph_opt(xtitle(&quot;Periods since the event&quot;) ytitle(&quot;Average causal effect&quot;) xlabel(-6(1)4) title(&quot;Callaway and Sant&#39;Anna (2020)&quot;)) stub_lag(T+#) stub_lead(T-#) together
+
+
+
+** Sun and Abraham
+ssc install eventstudyinteract
+ssc install avar
+
+insheet using &quot;https://raw.githubusercontent.com/imccart/empirical-methods/main/data/medicaid-expansion/mcaid-expand-data.txt&quot;, clear
+gen perc_unins=uninsured/adult_pop
+drop if expand_ever==&quot;NA&quot;
+egen stategroup=group(state)
+replace expand_year=&quot;.&quot; if expand_year==&quot;NA&quot;
+destring expand_year, replace
+gen event_time=year-expand_year
+gen nevertreated=(event_time==.)
+
+forvalues l = 0/4 {
+    gen L`l&#39;event = (event_time==`l&#39;)
+}
+forvalues l = 1/2 {
+    gen F`l&#39;event = (event_time==-`l&#39;)
+}
+gen F3event=(event_time&lt;=-3)
+eventstudyinteract perc_unins F3event F2event L0event L1event L2event L3event L4event, vce(cluster stategroup) absorb(stategroup year) cohort(expand_year) control_cohort(nevertreated)
+
+event_plot e(b_iw)#e(V_iw), default_look graph_opt(xtitle(&quot;Periods since the event&quot;) ytitle(&quot;Average causal effect&quot;) xlabel(-3(1)4) title(&quot;Sun and Abraham (2020)&quot;)) stub_lag(L#event) stub_lead(F#event) plottype(scatter) ciplottype(rcap) together
+
+
+
+** de Chaisemartin and D&#39;Haultfoeuille
+ssc install did_multiplegt
+
+insheet using &quot;https://raw.githubusercontent.com/imccart/empirical-methods/main/data/medicaid-expansion/mcaid-expand-data.txt&quot;, clear
+gen perc_unins=uninsured/adult_pop
+drop if expand_ever==&quot;NA&quot;
+egen stategroup=group(state)
+replace expand_year=&quot;.&quot; if expand_year==&quot;NA&quot;
+destring expand_year, replace
+gen event_time=year-expand_year
+gen nevertreated=(event_time==.)
+gen treat=(event_time&gt;=0 &amp; event_time!=.)
+
+did_multiplegt perc_unins stategroup year treat, robust_dynamic dynamic(4) placebo(3) breps(100) cluster(stategroup) 
+event_plot e(estimates)#e(variances), default_look graph_opt(xtitle(&quot;Periods since the event&quot;) ytitle(&quot;Average causal effect&quot;) ///
+title(&quot;de Chaisemartin and D&#39;Haultfoeuille (2020)&quot;) xlabel(-3(1)4)) stub_lag(Effect_#) stub_lead(Placebo_#) together
+</code></pre>
+<pre class="r"><code>########################################
+## Recent DD Estimators in R
+########################################
+library(tidyverse)
+library(modelsummary)
+library(data.table)
+library(fixest)
+mcaid.data &lt;- read_tsv(&quot;https://raw.githubusercontent.com/imccart/empirical-methods/main/data/medicaid-expansion/mcaid-expand-data.txt&quot;)
+
+
+## Callaway and Sant&#39;Anna
+library(did)
+library(DRDID)
+
+reg.dat &lt;- mcaid.data %&gt;% 
+  filter(!is.na(expand_ever)) %&gt;%
+  mutate(perc_unins=uninsured/adult_pop,
+         post = (year&gt;=2014), 
+         treat=post*expand_ever,
+         expand_year=ifelse(is.na(expand_year),0,expand_year)) %&gt;%
+  filter(!is.na(perc_unins)) %&gt;%
+  group_by(State) %&gt;%
+  mutate(stategroup=cur_group_id()) %&gt;% ungroup()
+
+mod.cs &lt;- att_gt(yname=&quot;perc_unins&quot;, tname=&quot;year&quot;, idname=&quot;stategroup&quot;,
+                 gname=&quot;expand_year&quot;,
+                 data=reg.dat, panel=TRUE, est_method=&quot;dr&quot;,
+                 allow_unbalanced_panel=TRUE)
+mod.cs.event &lt;- aggte(mod.cs, type=&quot;dynamic&quot;)
+ggdid(mod.cs.event)
+
+
+## Sun and Abraham
+reg.dat &lt;- mcaid.data %&gt;% 
+  filter(!is.na(expand_ever)) %&gt;%
+  mutate(perc_unins=uninsured/adult_pop,
+         post = (year&gt;=2014), 
+         treat=post*expand_ever,
+         expand_year = ifelse(expand_ever==FALSE, 10000, expand_year),
+         time_to_treat = ifelse(expand_ever==FALSE, -1, year-expand_year),
+         time_to_treat = ifelse(time_to_treat &lt; -3, -3, time_to_treat))
+
+mod.sa &lt;- feols(perc_unins~sunab(expand_year, time_to_treat) | State + year,
+                cluster=~State,
+                data=reg.dat)
+iplot(mod.sa,
+      xlab = &#39;Time to treatment&#39;,
+      main = &#39;Event study&#39;)
+
+
+## de Chaisemartin and D&#39;Haultfoeuille
+library(DIDmultiplegt)
+reg.dat &lt;- mcaid.data %&gt;% 
+  filter(!is.na(expand_ever)) %&gt;%
+  mutate(perc_unins=uninsured/adult_pop,
+         treat=case_when(
+           expand_ever==FALSE ~ 0,
+           expand_ever==TRUE &amp; expand_year&lt;year ~ 0,
+           expand_ever==TRUE &amp; expand_year&gt;=year ~ 1))
+
+mod.ch &lt;- did_multiplegt(df=reg.dat, Y=&quot;perc_unins&quot;, G=&quot;State&quot;, T=&quot;year&quot;, D=&quot;treat&quot;,
+                         placebo=3, dynamic=4, brep=50, cluster=&quot;State&quot;)
+mod.ch</code></pre>
+</div>
+
+<p class="footer" style="margin-top: 4em; font-size: 0.7em;">Copyright &copy; 2021 <a href="https://www.ianmccarthyecon.com/">Ian McCarthy</a>. Licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.</p>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

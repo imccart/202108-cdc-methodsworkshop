@@ -1,27 +1,21 @@
-name: "cdc-workshop"
+name: "panel-workshop"
 output_dir: docs
 navbar:
-  title: "CDC Workshop on Causal Inference with Panel Data"
+  title: "Workshop on Causal Inference with Panel Data"
   left:
     - text: ""
       icon: fa-home
       href: index.html
     - text: "Slides"
       href: slides.html
-    - text: "Plain text writing"
-      href: writing.html
-    - text: "Markdown"
+    - text: "Code"
       menu:
-        - text: "Markdown guide and resources"
-          href: markdown.html
-        - text: "Markdown editor"
-          href: markdown-editor.html
-        - text: "R Markdown"
-          href: rmarkdown.html
-    - text: "Reproducibility and automation"
-      href: reproducibility-automation.html
-    - text: "Git"
-      href: version-control.html
+        - text: "Stata do files"
+          href: stata-files.html
+        - text: "R scripts"
+          href: R-files.html
+    - text: "Data"
+      href: data.html
 output:
   html_document:
     theme: flatly

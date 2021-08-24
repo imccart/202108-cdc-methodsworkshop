@@ -1,0 +1,31 @@
+---
+title: "Stata Code Files"
+output:
+  html_document:
+    toc: yes
+    toc_float:
+      collapsed: no
+      smooth_scroll: yes
+---
+
+### Intro to Panel Data
+
+```{r eval=FALSE, code=xfun::read_utf8('https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/code/R-panel.R')}
+```
+
+
+### Basics of DD
+
+```{r eval=FALSE, code=xfun::read_utf8('https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/code/R-did.R')}
+```
+
+
+### TWFE and Event Studies
+
+```{r eval=FALSE, code=xfun::read_utf8('https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/code/R-event.R')}
+```
+
+### Recent DD Advancements
+
+```{r eval=FALSE, code=xfun::read_utf8('https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/code/R-newdd.R')}
+```

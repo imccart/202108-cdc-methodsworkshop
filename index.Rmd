@@ -13,20 +13,18 @@ title: "Causal Inference with Panel Data"
 }
 ```
 
-<div class="row" style="padding-top: 30px;">
-<div class="col-sm-6">
 
-# **Universal documents and reproducibility**
+# **Causal inference with panel data**
 
 **Ian McCarthy**  
-Department of Economics • Emory University
-Faculty Research Fellow • National Bureau of Economic Research
+Department of Economics • Emory University<br>
+Faculty Research Fellow • National Bureau of Economic Research<br>
 [ianmccarthyecon.com](https://www.ianmccarthyecon.com) • [\@ianhealthecon](https://twitter.com/ianhealthecon)
 
 ---
 
-Welcome to this workshop on causal inference with panel data!
+Welcome! This is a small site designed to house materials for a causal inference workshop loosely titled **Causal Inference with Panel Data**. The material on this site was most recently used for a 4-hour workshop I led with the Centers for Disease Control and Prevention (CDC) on August 23, 2021. The internal title of that workshop was *Quasi-Experimental Research Methods for Policy*. But I'm not a huge fan of the term "quasi-experimental" (or natural experiment, for that matter), so I'm sticking with **Causal Inference with Panel Data**! I don't think this is the best title but I couldn't come up with a better one. 
 
-Use the top menu to see different resources and guides.
+Practically, this is a workshop on difference-in-differences and some more recent estimators with panel data (e.g., matching with panel data, synthetic control, and matrix completion). This site houses all of the slides and code relevant for the workshop. Use the top menu to navigate the site, and you can find all of the source code at the GitHub repository, [here](https://github.com/imccart/202108-cdc-methodsworkshop).
 
-Source code available [here](https://github.com/imccart/202108-cdc-methodsworkshop).
+The workshop is also part of a much larger project that I'm calling [**Navigating Empirical Methods**](https://empiricalmethods.ianmccarthyecon.com). This is an online "book" that is focuses on **implementation** of standard causal inference techniques. The idea of this project is to acknowledge that most applied empirical work is part science and part art, and I want this to help with the *art* side of things. The site is very much a work in progress (and very slow work at that!) but I think it's worthwhile so it will be finished one day.
