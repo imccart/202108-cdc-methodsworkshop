@@ -8,6 +8,18 @@ output:
       smooth_scroll: yes
 ---
 
+```{css, echo=FALSE}
+pre {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+pre[class] {
+  max-height: 200px;
+}
+```
+
+
 ### Intro to Panel Data
 
 ```{stata eval=FALSE, code=xfun::read_utf8('https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/code/Stata-panel.do')}
