@@ -140,7 +140,7 @@ Estimate $E[Y_{1}(1)|W=1] - E[Y_{0}(1)|W=1]$ using $E[Y_{0}(1)|W=0] - E[Y_{0}(0)
 # Graphically
 
 .center[
-  ![:scale 900px](../../pics/standard-dd.png)
+  ![:scale 900px](img/standard-dd.png)
 ]
 
 
@@ -229,11 +229,11 @@ p <- ggplot(dffull,aes(y=Y,x=xaxisTime,color=as.factor(Control)))+geom_point()+
 
 anim.p <- animate(p,nframes=150)
 anim_save("dd_animate.gif",
-          anim.p,path=here("difference-in-differences/slides"))
+          anim.p,path=here("slides/img"))
 ```
 
 .center[
-  ![:scale 900px](dd_animate.gif)
+  ![:scale 900px](img/dd_animate.gif)
 ]
 
 
@@ -425,3 +425,9 @@ msummary(dd.ins.reg)
 - We've ignored any issues with inference
 - Typically want to cluster at unit-level to allow for correlation over time within units
 - "Extra" things like propensity score weighting and doubly robust estimation
+
+
+```{r echo=FALSE, include=FALSE, eval=FALSE}
+pagedown::chrome_print("did-cdc202108.html", 
+                       output = "did-cdc202108.pdf")
+```
