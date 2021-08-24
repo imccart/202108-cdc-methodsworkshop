@@ -19,6 +19,9 @@ pre[class] {
 }
 ```
 
+```{r klippy, echo=FALSE, include=TRUE}
+klippy::klippy(position = c('top', 'right'))
+```
 
 ### Intro to Panel Data
 
