@@ -105,7 +105,7 @@ where $\gamma_{i}$ and $\gamma_{t}$ denote a set of unit $i$ and time period $t$
 ```{r}
 library(tidyverse)
 library(modelsummary)
-mcaid.data <- read_tsv("https://raw.githubusercontent.com/imccart/empirical-methods-extras/main/data/medicaid-expansion/mcaid-expand-data.txt")
+mcaid.data <- read_tsv("https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/data/medicaid-expansion/mcaid-expand-data.txt")
 reg.dat <- mcaid.data %>% filter(expand_year==2014 | is.na(expand_year), !is.na(expand_ever)) %>%
   mutate(perc_unins=uninsured/adult_pop,
          post = (year>=2014), 
@@ -315,7 +315,7 @@ Essentially two "flavors" of event studies
 ```{stata, eval=FALSE}
 ssc install reghdfe
 
-insheet using "https://raw.githubusercontent.com/imccart/empirical-methods-extra/main/data/medicaid-expansion/mcaid-expand-data.txt", clear
+insheet using "https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/data/medicaid-expansion/mcaid-expand-data.txt", clear
 gen perc_unins=uninsured/adult_pop
 keep if expand_year=="2014" | expand_year=="NA"
 drop if expand_ever=="NA"
@@ -356,7 +356,7 @@ library(tidyverse)
 library(modelsummary)
 library(data.table)
 library(fixest)
-mcaid.data <- read_tsv("https://raw.githubusercontent.com/imccart/empirical-methods-extra/main/data/medicaid-expansion/mcaid-expand-data.txt")
+mcaid.data <- read_tsv("https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/data/medicaid-expansion/mcaid-expand-data.txt")
 reg.dat <- as.data.table(mcaid.data) %>% 
   filter(expand_year==2014 | is.na(expand_year), !is.na(expand_ever)) %>%
   mutate(perc_unins=uninsured/adult_pop,
@@ -418,7 +418,7 @@ count: false
 ```{stata, eval=FALSE}
 ssc install reghdfe
 
-insheet using "https://raw.githubusercontent.com/imccart/empirical-methods-extra/main/data/medicaid-expansion/mcaid-expand-data.txt", clear
+insheet using "https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/data/medicaid-expansion/mcaid-expand-data.txt", clear
 gen perc_unins=uninsured/adult_pop
 drop if expand_ever=="NA"
 replace expand_year="." if expand_year=="NA"
@@ -474,7 +474,7 @@ library(tidyverse)
 library(modelsummary)
 library(data.table)
 library(fixest)
-mcaid.data <- read_tsv("https://raw.githubusercontent.com/imccart/empirical-methods-data/main/data/medicaid-expansion/mcaid-expand-data.txt")
+mcaid.data <- read_tsv("https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/data/medicaid-expansion/mcaid-expand-data.txt")
 reg.dat <- as.data.table(mcaid.data) %>% 
   filter(!is.na(expand_ever)) %>%
   mutate(perc_unins=uninsured/adult_pop,
@@ -525,3 +525,9 @@ Just the length of the panel will change the estimate!
 - Definitely! But how much?
 - Large treatment effects for early treated units could reverse the sign of final estimate
 - Let's explore this nice Shiny app from Kyle Butts: [Bacon-Decomposition Shiny App](https://kyle-butts.shinyapps.io/did_bacon/).
+
+
+```{r echo=FALSE, include=FALSE, eval=FALSE}
+pagedown::chrome_print("twfe-cdc202108.html", 
+                       output = "twfe-cdc202108.pdf")
+```

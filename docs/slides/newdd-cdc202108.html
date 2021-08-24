@@ -123,7 +123,7 @@ ssc install csdid
 ssc install event_plot
 ssc install drdid
 
-insheet using "https://raw.githubusercontent.com/imccart/empirical-methods-extras/main/data/medicaid-expansion/mcaid-expand-data.txt", clear
+insheet using "https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/data/medicaid-expansion/mcaid-expand-data.txt", clear
 gen perc_unins=uninsured/adult_pop
 egen stategroup=group(state)
 drop if expand_ever=="NA"
@@ -144,7 +144,7 @@ event_plot cs, default_look graph_opt(xtitle("Periods since the event") ytitle("
 library(tidyverse)
 library(did)
 library(DRDID)
-mcaid.data &lt;- read_tsv("https://raw.githubusercontent.com/imccart/empirical-methods-extras/main/data/medicaid-expansion/mcaid-expand-data.txt")
+mcaid.data &lt;- read_tsv("https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/data/medicaid-expansion/mcaid-expand-data.txt")
 reg.dat &lt;- mcaid.data %&gt;% 
   filter(!is.na(expand_ever)) %&gt;%
   mutate(perc_unins=uninsured/adult_pop,
@@ -224,7 +224,7 @@ ssc install eventstudyinteract
 ssc install avar
 ssc install event_plot
 
-insheet using "https://raw.githubusercontent.com/imccart/empirical-methods-extras/main/data/medicaid-expansion/mcaid-expand-data.txt", clear
+insheet using "https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/data/medicaid-expansion/mcaid-expand-data.txt", clear
 gen perc_unins=uninsured/adult_pop
 drop if expand_ever=="NA"
 egen stategroup=group(state)
@@ -254,7 +254,7 @@ event_plot e(b_iw)#e(V_iw), default_look graph_opt(xtitle("Periods since the eve
 library(tidyverse)
 library(modelsummary)
 library(fixest)
-mcaid.data &lt;- read_tsv("https://raw.githubusercontent.com/imccart/empirical-methods-extras/main/data/medicaid-expansion/mcaid-expand-data.txt")
+mcaid.data &lt;- read_tsv("https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/data/medicaid-expansion/mcaid-expand-data.txt")
 reg.dat &lt;- mcaid.data %&gt;% 
   filter(!is.na(expand_ever)) %&gt;%
   mutate(perc_unins=uninsured/adult_pop,
@@ -311,7 +311,7 @@ New paper from Callaway, Goodman-Bacon, and Sant'Anna also looks at DD with cont
 ssc install did_multiplegt
 ssc install event_plot
 
-insheet using "https://raw.githubusercontent.com/imccart/empirical-methods-extras/main/data/medicaid-expansion/mcaid-expand-data.txt", clear
+insheet using "https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/data/medicaid-expansion/mcaid-expand-data.txt", clear
 gen perc_unins=uninsured/adult_pop
 drop if expand_ever=="NA"
 egen stategroup=group(state)
@@ -333,7 +333,7 @@ title("de Chaisemartin and D'Haultfoeuille (2020)") xlabel(-3(1)4)) stub_lag(Eff
 
 ```r
 library(DIDmultiplegt)
-mcaid.data &lt;- read_tsv("https://raw.githubusercontent.com/imccart/empirical-methods-extras/main/data/medicaid-expansion/mcaid-expand-data.txt")
+mcaid.data &lt;- read_tsv("https://raw.githubusercontent.com/imccart/202108-cdc-methodsworkshop/master/data/medicaid-expansion/mcaid-expand-data.txt")
 reg.dat &lt;- as.data.table(mcaid.data) %&gt;% 
   filter(!is.na(expand_ever)) %&gt;%
   mutate(perc_unins=uninsured/adult_pop,
@@ -463,6 +463,8 @@ Goodman-Bacon (2021) explores the problems but doesn't really propose a solution
 - Careful consideration of treatment timing and control group(s)
 - `panelView` package is great here!
 - Implement 2 or more approaches
+
+
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

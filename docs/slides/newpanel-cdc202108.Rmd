@@ -221,3 +221,9 @@ But that's too many parameters! So we need some regularization.
 
 - Include fixed effects explicitly rather than embedded into $L$
 - Implement with `gsynth` in R
+
+
+```{r echo=FALSE, include=FALSE, eval=FALSE}
+pagedown::chrome_print("newpanel-cdc202108.html", 
+                       output = "newpanel-cdc202108.pdf")
+```
