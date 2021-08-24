@@ -1,5 +1,5 @@
 ---
-title: "Universal documents and reproducibility"
+title: "Causal Inference with Panel Data"
 ---
 
 ```{css, echo=FALSE}
@@ -18,39 +18,15 @@ title: "Universal documents and reproducibility"
 
 # **Universal documents and reproducibility**
 
-**Andrew Heiss**  
-Andrew Young School of Policy Studies • Georgia State University  
-[andrewheiss.com](https://www.andrewheiss.com) • [\@andrewheiss](https://twitter.com/andrewheiss)
+**Ian McCarthy**  
+Department of Economics • Emory University
+Faculty Research Fellow • National Bureau of Economic Research
+[ianmccarthyecon.com](https://www.ianmccarthyecon.com) • [\@ianhealthecon](https://twitter.com/ianhealthecon)
 
 ---
 
-<small>EPID 9100 PhD/MS Seminar, Spring 2021  
-Department of Epidemiology & Biostatistics • University of Georgia  
-March 4, 2021</small>
-
----
-
-Welcome to this workshop on Markdown and reproducibility!
+Welcome to this workshop on causal inference with panel data!
 
 Use the top menu to see different resources and guides.
 
-Download materials to play along with here:
-
-<p><a class="btn btn-info btn-lg" target="_blank" href="markdown-playground.zip"><i class="fas fa-external-link-alt"></i> markdown-playground.zip</a></p>
-
-You can view and download [the Markdown source for this whole website at GitHub](https://github.com/andrewheiss/2021-03-04_uga-markdown).
-
-</div>
-
-<div class="col-sm-6">
-
-```{r echo=FALSE}
-knitr::include_graphics("slides/img/md-to-everything.png")
-```
-
-```{r echo=FALSE}
-knitr::include_graphics("slides/img/md-outputs.png")
-```
-
-</div>
-</div>
+Source code available [here](https://github.com/imccart/202108-cdc-methodsworkshop).

@@ -1,7 +1,7 @@
-name: "universal-documents"
+name: "cdc-workshop"
 output_dir: docs
 navbar:
-  title: "Universal documents"
+  title: "CDC Workshop on Causal Inference with Panel Data"
   left:
     - text: ""
       icon: fa-home
