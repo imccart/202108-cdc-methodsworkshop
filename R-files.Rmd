@@ -19,8 +19,8 @@ pre[class] {
 }
 ```
 
-```{r klippy, echo=FALSE, include=TRUE}
-klippy::klippy(position = c('top', 'right'))
+```{r xaringanExtra-clipboard, echo=FALSE}
+xaringanExtra::use_clipboard()
 ```
 
 ### Intro to Panel Data
